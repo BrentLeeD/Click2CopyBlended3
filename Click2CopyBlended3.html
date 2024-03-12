@@ -83,7 +83,7 @@
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const variables = ["idNumber", "firstName", "lastName", "phoneNumber", "yawaReference", "inboundid", "saYouthID", "ConversationId"];
+      const variables = ["idNumber", "firstName", "lastName", "phoneNumber", "yawaReference", "inboundid", "saYouthID", "conversationId"];
 
       variables.forEach(variable => {
         const variableElem = document.getElementById(variable);
@@ -114,27 +114,26 @@
       const lastNameElem = document.getElementById("lastName");
       const lastNameValue = lastNameElem.querySelector(".value").textContent;
 
-      if (yawaReferenceValue.includes("YAWA")) {
-        document.body.classList.add("yawa-background");
-        greetingElem.classList.add("yawa-greeting");
-        titleElem.textContent = "YAWA Outbound call";
-        greetingElem.textContent = `Good day, my name is {{Agent Name}} and I'm calling you from SA Youth. Could I please speak to ${firstNameValue} ${lastNameValue} ? Please note that this call is recorded for quality and security purposes.`;
+if (yawaReferenceValue.includes("YAWA")) {
+  document.body.classList.add("yawa-background");
+  greetingElem.classList.add("yawa-greeting");
+  titleElem.textContent = "YAWA Outbound call";
+  greetingElem.textContent = `Good day, my name is {{Agent Name}} and I'm calling you from SA Youth. Could I please speak to ${firstNameValue} ${lastNameValue} ? Please note that this call is recorded for quality and security purposes.`;
 
-        // Hide inboundid variable
-        document.getElementById("inboundid").style.display = "none";
-      } else {
-        greetingElem.classList.add("non-yawa-greeting");
-        titleElem.textContent = "Click to Copy!";
-        greetingElem.textContent = "Welcome to the SA Youth support line! How can I help you today?";
+  // Hide inboundid variable
+  document.getElementById("inboundid").style.display = "none";
+} else {
+  greetingElem.classList.add("non-yawa-greeting");
+  titleElem.textContent = "Click to Copy!";
+  greetingElem.textContent = "Welcome to the SA Youth support line! How can I help you today?";
 
-        // Hide all variables except inboundid
-        variables.forEach(variable => {
-          if (variable !== "inboundid") {
-            document.getElementById(variable).style.display = "none";
-          }
-        });
-      }
-
+  // Hide all variables except inboundid and conversationId
+  variables.forEach(variable => {
+    if (variable !== "inboundid" && variable !== "conversationId") {
+      document.getElementById(variable).style.display = "none";
+    }
+  });
+}
       toggleButton.addEventListener("click", () => {
         document.body.classList.remove("white-background", "black-background", "yawa-background");
         greetingElem.classList.remove("yawa-greeting", "non-yawa-greeting");
@@ -225,7 +224,7 @@
         <span class="value"></span>
         <span class="message"></span>
       </div>
-      <div class="variable" id="ConversationId">
+      <div class="variable" id="conversationId">
         <span class="name">Conversation ID:</span>
         <span class="value"></span>
         <span class="message"></span>
