@@ -75,7 +75,7 @@
       font-weight: bold;
     }
     .non-yawa-greeting {
-      color: red;
+      color: white;
     }
     .yawa-greeting {
       color: chartreuse;
@@ -83,7 +83,7 @@
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const variables = ["idNumber", "firstName", "lastName", "phoneNumber", "yawaReference", "inboundid", "saYouthID", "conversationId"];
+      const variables = ["idNumber", "firstName", "lastName", "phoneNumber", "yawaReference", "inboundid", "saYouthID", "ConversationId"];
 
       variables.forEach(variable => {
         const variableElem = document.getElementById(variable);
@@ -225,7 +225,7 @@
         <span class="value"></span>
         <span class="message"></span>
       </div>
-      <div class="variable" id="conversationId">
+      <div class="variable" id="ConversationId">
         <span class="name">Conversation ID:</span>
         <span class="value"></span>
         <span class="message"></span>
